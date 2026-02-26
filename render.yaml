@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: whoowes-api
+    env: node
+    plan: free          # upgrade to 'starter' ($7/mo) to avoid cold starts
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false     # set manually in Render dashboard
+      - key: JWT_SECRET
+        sync: false     # set manually in Render dashboard
+      - key: JWT_EXPIRES_IN
+        value: 30d
